@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Category>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">
+                Category List 
+            </h2>
+        </div>
+        <div class="col-6 text-end pb-4">
+            <a asp-controller="Category" asp-action="Create" class="btn btn-primary">
+                Create New Category &nbsp; <i class="bi bi-plus-square text-white"></i>
+            </a>
+        </div>
+
+    </div>
+
+
+
+
+<table class="table table-bordered" style="width:100%">
+    <thead style="background-color:gray">
+        <tr>
+            <th style="background-color:gray">
+                Category 
+            </th>
+            <th style="background-color:gray">
+                Display Order 
+            </th>
+            <th style="background-color:gray"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach(var obj in Model)
+        {
+            <tr>
+                <td width="50%">
+                    @obj.Name
+                </td>
+                <td width="30%">
+                    @obj.DisplayOrder
+                </td>
+                <td>
+                     <div class="w-75 btn-group" role="group">
+                            <a class="btn btn-warning text-decoration-none" asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id"><i class="bi bi-pencil-square"></i> &nbsp; Edit</a> &nbsp; &nbsp; &nbsp;
+                            <a class="btn btn-danger text-decoration-none" asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id"><i class="bi bi-trash3"></i> &nbsp; Delete</a>
+                     </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
